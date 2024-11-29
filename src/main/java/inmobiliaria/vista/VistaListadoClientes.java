@@ -12,5 +12,5 @@ import java.util.List;
  * @author santi
  */
 public interface VistaListadoClientes {
-    void cargarClientes(List<ClienteDTO> clientes);
+    void cargarClientes(List<ClienteDTO> clientes); 
 }
