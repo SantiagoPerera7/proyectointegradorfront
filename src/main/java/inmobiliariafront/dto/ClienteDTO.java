@@ -11,14 +11,15 @@ import java.util.List;
  *
  * @author Ulx
  */
-public class ClienteDTO {
-
+public class ClienteDTO{
     private Integer id;
     private String nombre;
     private String apellido;
     private String direccion;
     private List<PropiedadDTO> propiedades = new ArrayList<>();
     private List<ContratoDTO> contratos = new ArrayList<>();
+    private List<AlquilerDTO> alquileres = new ArrayList<>();
+
 
     public ClienteDTO() {
     }
@@ -27,6 +28,24 @@ public class ClienteDTO {
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
+    }
+
+    public List<ContratoDTO> getContratos() {
+        return contratos;
+    }
+
+    public void setContratos(List<ContratoDTO> contratos) {
+        this.contratos = contratos;
+    }
+
+    public void agregarContrato(ContratoDTO contrato) {
+        contratos.add(contrato);
+        contrato.setCliente(this);
+    }
+
+    public void eliminarContrato(ContratoDTO contrato) {
+       contratos.remove(contrato);
+        contrato.setCliente(null);
     }
 
     public Integer getId() {
@@ -61,6 +80,7 @@ public class ClienteDTO {
         this.direccion = direccion;
     }
 
+
     public List<PropiedadDTO> getPropiedades() {
         return propiedades;
     }
@@ -68,26 +88,20 @@ public class ClienteDTO {
     public void setPropiedades(List<PropiedadDTO> propiedades) {
         this.propiedades = propiedades;
     }
-    public List<ContratoDTO> getContratos() {
-        return contratos;
+
+    public void agregarPropiedad(PropiedadDTO p) {
+        propiedades.add(p);
+    }
+    public List<AlquilerDTO> getAlquileres() {
+        return alquileres;
     }
 
-    public void setContratos(List<ContratoDTO> contratos) {
-        this.contratos = contratos;
-    }
-
-    public void agregarContrato(ContratoDTO contrato) {
-        contratos.add(contrato);
-        contrato.setCliente(this);
-    }
-
-    public void eliminarContrato(ContratoDTO contrato) {
-        contratos.remove(contrato);
-        contrato.setCliente(null);
+    public void setAlquileres(List<AlquilerDTO> alquileres) {
+        this.alquileres = alquileres;
     }
 
     @Override
-    public String toString(){
-        return this.nombre+" "+this.apellido+" - "+this.direccion;
+    public String toString() {
+        return this.nombre + " " + this.apellido + " - " + this.direccion;
     }
 }

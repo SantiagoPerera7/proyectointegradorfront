@@ -157,6 +157,7 @@ public class VentanaRegistroClientes extends javax.swing.JFrame{
             // Convertir el objeto Usuario a JSON
             Gson gson = new Gson();
             String jsonInputString = gson.toJson(cliente);
+            System.out.println(jsonInputString);
 
             // Enviar la solicitud
             try (OutputStream os = con.getOutputStream()) {

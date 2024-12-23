@@ -16,27 +16,29 @@ public class PropiedadDTO {
     private String direccion;
     private String descripcion;
     private Integer cantidadBanios;
+    private Integer cantidadDormitorios;
     private Integer cantidadAmbientes;
     private Integer cantidadCocheras;
-    private String barrio;
-    private String ciudad;
+    private BarrioDTO barrio;
+    private CiudadDTO ciudad;
     private Integer cantidadPlantas;
     private boolean aceptaMascotas;
-    private String tipo;
+    private TipoPropiedadDTO tipo;
     private Double metrosCuadradosTotales;
     private Double metrosCuadradosEdificados;
     private Double metrosCuadradosTerreno;
     private String titularActualUTE;
     private String titularActualOSE;
-    private String tipoTecho;
+    private TipoTechoDTO tipoTecho;
     public ClienteDTO propietario;
     private List<FotoDTO> fotos = new ArrayList<>();
+    private AlquilerDTO alquiler;
     public PropiedadDTO(){
     }
-    public PropiedadDTO(String direccion, String descripcion, ClienteDTO propietario, String tipo, String barrio,
-            String ciudad, Integer cantidadAmbientes, Integer cantidadPlantas, Integer cantidadBanios,
+    public PropiedadDTO(String direccion, String descripcion, ClienteDTO propietario, TipoPropiedadDTO tipo, BarrioDTO barrio,
+            CiudadDTO ciudad, Integer cantidadAmbientes, Integer cantidadPlantas, Integer cantidadBanios, Integer cantidadDormitorios,
             Double metrosCuadradosTotales, Double metrosCuadradosEdificados, Double metrosCuadradosTerreno,
-            String titularActualUTE,String titularActualOSE, String tipoTecho, Integer cantidadCocheras, Boolean aceptaMascotas){
+            String titularActualUTE,String titularActualOSE, TipoTechoDTO tipoTecho, Integer cantidadCocheras, Boolean aceptaMascotas){
         this.direccion=direccion;
         this.descripcion=descripcion;
         this.propietario=propietario;
@@ -46,6 +48,7 @@ public class PropiedadDTO {
         this.cantidadAmbientes=cantidadAmbientes;
         this.cantidadPlantas=cantidadPlantas;
         this.cantidadBanios=cantidadBanios;
+        this.cantidadDormitorios=cantidadDormitorios;
         this.metrosCuadradosTotales=metrosCuadradosTotales;
         this.metrosCuadradosEdificados=metrosCuadradosEdificados;
         this.metrosCuadradosTerreno=metrosCuadradosTerreno;
@@ -55,12 +58,29 @@ public class PropiedadDTO {
         this.cantidadCocheras=cantidadCocheras;
         this.aceptaMascotas=aceptaMascotas;
     }
-    public List<FotoDTO> getFotos() {
+    public AlquilerDTO getAlquiler() {
+        return alquiler;
+    }
+
+    public void setAlquiler(AlquilerDTO alquiler) {
+        this.alquiler = alquiler;
+    }
+        public List<FotoDTO> getFotos() {
         return fotos;
     }
 
     public void setFotos(List<FotoDTO> fotos) {
         this.fotos = fotos;
+    }
+
+    public void agregarFoto(FotoDTO foto) {
+        foto.setPropiedad(this); // Establecer la relación bidireccional
+        this.fotos.add(foto);
+    }
+
+    public void eliminarFoto(FotoDTO foto) {
+        foto.setPropiedad(null); // Romper la relación bidireccional
+        this.fotos.remove(foto);
     }
     public Integer getId() {
         return id;
@@ -117,19 +137,19 @@ public class PropiedadDTO {
         this.cantidadCocheras = cantidadCocheras;
     }
 
-    public String getBarrio() {
+    public BarrioDTO getBarrio() {
         return barrio;
     }
 
-    public void setBarrio(String barrio) {
+    public void setBarrio(BarrioDTO barrio) {
         this.barrio = barrio;
     }
 
-    public String getCiudad() {
+    public CiudadDTO getCiudad() {
         return ciudad;
     }
 
-    public void setCiudad(String ciudad) {
+    public void setCiudad(CiudadDTO ciudad) {
         this.ciudad = ciudad;
     }
 
@@ -149,11 +169,11 @@ public class PropiedadDTO {
         this.aceptaMascotas = aceptaMascotas;
     }
 
-    public String getTipo() {
+    public TipoPropiedadDTO getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoPropiedadDTO tipo) {
         this.tipo = tipo;
     }
 
@@ -197,11 +217,11 @@ public class PropiedadDTO {
         this.titularActualOSE = titularActualOSE;
     }
 
-    public String getTipoTecho() {
+    public TipoTechoDTO getTipoTecho() {
         return tipoTecho;
     }
 
-    public void setTipoTecho(String tipoTecho) {
+    public void setTipoTecho(TipoTechoDTO tipoTecho) {
         this.tipoTecho = tipoTecho;
     }
     @Override

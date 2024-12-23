@@ -12,6 +12,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Date;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -147,7 +148,7 @@ public class VentanaRegistroContratos extends javax.swing.JFrame {
         HttpClient client = HttpClient.newHttpClient();
 
         // Crear el objeto PropiedadDTO
-        ContratoDTO contrato = new ContratoDTO(nombreArchivo,rutaArchivo,cliente);
+        ContratoDTO contrato = new ContratoDTO(nombreArchivo,rutaArchivo,cliente,new Date(),new Date());
 
         // Serializar a JSON usando Gson o Jackson
         Gson gson = new Gson(); // O ObjectMapper mapper = new ObjectMapper();

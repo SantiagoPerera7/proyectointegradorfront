@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package inmobiliariafront.ventanas;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import inmobiliaria.controladores.ControladorLogin;
 import inmobiliaria.vista.VistaLogin;
 import java.awt.Color;
@@ -18,6 +19,7 @@ public class VentanaInicio extends javax.swing.JFrame implements VistaLogin{
      * Creates new form VentanaInicio
      */
     public VentanaInicio() {
+        FlatMaterialLighterIJTheme.setup();
         initComponents();
         setTitle("Inicio sesion inmobiliaria");
         setSize(700,360);
@@ -41,6 +43,7 @@ public class VentanaInicio extends javax.swing.JFrame implements VistaLogin{
         JTextoExito = new javax.swing.JLabel();
         Login = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        button1 = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -79,7 +82,15 @@ public class VentanaInicio extends javax.swing.JFrame implements VistaLogin{
         Login.setBackground(new java.awt.Color(255, 255, 255));
         Login.setToolTipText("");
         Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        Login.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 20, 450, 300));
+        Login.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 20, 450, 210));
+
+        button1.setLabel("button1");
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+        Login.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, -1, -1));
 
         getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 0, 420, 360));
 
@@ -96,6 +107,10 @@ public class VentanaInicio extends javax.swing.JFrame implements VistaLogin{
        String password = JTextoPassword.getText();
        controlador.loginExitoso(user, password);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        abrirVentanaPrincipal();
+    }//GEN-LAST:event_button1ActionPerformed
 
     
     /**
@@ -139,6 +154,7 @@ public class VentanaInicio extends javax.swing.JFrame implements VistaLogin{
     private javax.swing.JPasswordField JTextoPassword;
     private javax.swing.JTextField JTextoUsuario;
     private javax.swing.JPanel Login;
+    private java.awt.Button button1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

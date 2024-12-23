@@ -4,23 +4,46 @@
  */
 package inmobiliariafront.dto;
 
+import java.util.Date;
+
 /**
  *
  * @author santi
  */
-public class ContratoDTO {
+public class ContratoDTO{
     private Integer id;
     private String nombreArchivo;
     private String rutaArchivo;
     private ClienteDTO cliente;
+    private Date fechaInicio;
+    private Date fechaFin;
+    private AlquilerDTO alquiler;
 
     public ContratoDTO() {
     }
 
-    public ContratoDTO(String nombreArchivo, String rutaArchivo, ClienteDTO cliente) {
+    public ContratoDTO(String nombreArchivo, String rutaArchivo, ClienteDTO cliente, Date fechaInicio, Date fechaFin) {
         this.nombreArchivo = nombreArchivo;
         this.rutaArchivo = rutaArchivo;
         this.cliente = cliente;
+        this.fechaInicio=fechaInicio;
+        this.fechaFin=fechaFin;  
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
     public Integer getId() {
@@ -57,6 +80,10 @@ public class ContratoDTO {
 
     @Override
     public String toString() {
-        return this.nombreArchivo;
+        return "Contrato{" +
+                "id=" + id +
+                ", nombreArchivo='" + nombreArchivo + '\'' +
+                ", rutaArchivo='" + rutaArchivo + '\'' +
+                '}';
     }
 }

@@ -10,7 +10,6 @@ package inmobiliariafront.dto;
  */
 public class FotoDTO {
     private Integer id;
-
     private String url;
     private PropiedadDTO propiedad;
 
